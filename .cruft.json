@@ -1,0 +1,19 @@
+{
+  "template": "https://github.com/diegocanales/cookiecutter-mlops.git",
+  "commit": "571c9b7fe7b04f00f0e787683884adfd53c859e1",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "repo_name": "movie-recommender-system",
+      "project_name": "Movie Recommender System",
+      "author_name": "Diego Canales",
+      "description": "A short description of the project.",
+      "package_name": "movie_recommender_system",
+      "conda_env": "movie_recommender_system",
+      "docker_image": "movie_recommender_system",
+      "ml_project": "yes",
+      "_template": "https://github.com/diegocanales/cookiecutter-mlops.git"
+    }
+  },
+  "directory": null
+}
