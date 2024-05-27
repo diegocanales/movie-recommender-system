@@ -4,5 +4,7 @@ channels:
 dependencies:
   - python=3.9.*
   - pip
+  - pandas
+  - ydata-profiling
   - pip:
     - -e ."[dev]"
