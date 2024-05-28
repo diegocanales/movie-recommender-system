@@ -6,5 +6,6 @@ dependencies:
   - pip
   - pandas
   - ydata-profiling
+  - dvc
   - pip:
     - -e ."[dev]"
