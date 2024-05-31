@@ -7,5 +7,7 @@ dependencies:
   - pandas
   - ydata-profiling
   - dvc-s3
+  - nltk
+  - scikit-learn
   - pip:
     - -e ."[dev]"
