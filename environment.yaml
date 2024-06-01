@@ -9,5 +9,6 @@ dependencies:
   - dvc-s3
   - nltk
   - scikit-learn
+  - streamlit
   - pip:
     - -e ."[dev]"

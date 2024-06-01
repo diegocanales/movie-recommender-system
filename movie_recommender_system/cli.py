@@ -1,12 +1,10 @@
 import typer
-# from movie_recommender_system.my_module.my_submodule import my_cli_function
-# from movie_recommender_system.my_module2.my_submodule2 import my_cli_function2
+
+from movie_recommender_system.features.cli import processing_features
 
 app = typer.Typer()
 
-# Add your commands here!
-# app.command()(my_cli_function)
-# app.command()(my_cli_function2)
+app.command()(processing_features)
 
 def main():
     app()
