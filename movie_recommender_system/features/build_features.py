@@ -2,6 +2,7 @@ import ast
 import nltk
 from nltk.stem import PorterStemmer
 import pandas as pd
+from typing import List
 
 def extract_data_from_dict_string(string_dict, key) -> list:
     value_list = []
@@ -38,10 +39,8 @@ def stems(text):
     
     return " ".join(T)
 
-from typing import List
-
 def processing_features(df: pd.DataFrame,
-                        str_columns: List[str] = ["overview, ""original_title", "original_language", "release_date"],
+                        str_columns: List[str] = ["overview", "original_title", "original_language", "release_date"],
                         list_dict_columns: List[str] = ["genres", "keywords", "production_companies", "production_countries"],
                         cast_count: int = 3,
                         crew_jobs_list: List[str] = None) -> pd.DataFrame:
