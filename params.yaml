@@ -1,0 +1,5 @@
+processing:
+  str_columns: ["overview", "original_title", "original_language", "release_date"]
+  list_dict_columns: ["genres", "keywords", "production_companies", "production_countries"]
+  cast_count: 3
+  crew_jobs_list: ["Director"]
