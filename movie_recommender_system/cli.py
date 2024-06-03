@@ -1,12 +1,15 @@
 import typer
-# from movie_recommender_system.my_module.my_submodule import my_cli_function
-# from movie_recommender_system.my_module2.my_submodule2 import my_cli_function2
+
+from movie_recommender_system.features.cli import processing
+from movie_recommender_system.data.make_dataset import create_dataset
+from movie_recommender_system.models.train_model import train_model
 
 app = typer.Typer()
 
-# Add your commands here!
-# app.command()(my_cli_function)
-# app.command()(my_cli_function2)
+app.command()(create_dataset)
+app.command()(processing)
+app.command()(train_model)
+
 
 def main():
     app()

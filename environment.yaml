@@ -4,5 +4,11 @@ channels:
 dependencies:
   - python=3.9.*
   - pip
+  - pandas
+  - ydata-profiling
+  - dvc-s3
+  - nltk
+  - scikit-learn
+  - streamlit
   - pip:
     - -e ."[dev]"

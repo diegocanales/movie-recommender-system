@@ -1,0 +1,34 @@
+stages:
+  create-dataset:
+    cmd: >
+      movie_recommender_system create-dataset
+      --movie-data-path data/raw/tmdb_5000_movie_dataset/movies.csv
+      --credits-data-path data/raw/tmdb_5000_movie_dataset/credits.csv
+      --output-path data/interim/dataset.csv
+    deps:
+      - data/raw/tmdb_5000_movie_dataset/movies.csv
+      - data/raw/tmdb_5000_movie_dataset/credits.csv
+    outs:
+      - data/interim/dataset.csv
+  processing:
+    cmd: >
+      movie_recommender_system processing
+      --data-path data/interim/dataset.csv
+      --config-path params.yaml
+      --output-path data/processed/dataset.csv
+    deps:
+      - data/interim/dataset.csv
+      - params.yaml
+    outs:
+      - data/processed/dataset.csv
+    params:
+      - processing
+  train:
+    cmd: >
+      movie_recommender_system train-model
+      --data-path data/processed/dataset.csv
+      --output-path models/model.pkl
+    deps:
+      - data/processed/dataset.csv
+    outs:
+      - models/model.pkl

@@ -1,0 +1,66 @@
+schema: '2.0'
+stages:
+  create-dataset:
+    cmd: "movie_recommender_system create-dataset --movie-data-path data/raw/tmdb_5000_movie_dataset/movies.csv
+      --credits-data-path data/raw/tmdb_5000_movie_dataset/credits.csv --output-path
+      data/interim/dataset.csv\n"
+    deps:
+    - path: data/raw/tmdb_5000_movie_dataset/credits.csv
+      hash: md5
+      md5: 6c5e0e12bfbc527697d7977d86b97ed4
+      size: 40044293
+    - path: data/raw/tmdb_5000_movie_dataset/movies.csv
+      hash: md5
+      md5: 64346a71897b5741d553d34b86088603
+      size: 5698602
+    outs:
+    - path: data/interim/dataset.csv
+      hash: md5
+      md5: e9d8af2043400476b6a0b74d9d904c94
+      size: 18366285
+  processing:
+    cmd: "movie_recommender_system processing --data-path data/interim/dataset.csv
+      --config-path params.yaml --output-path data/processed/dataset.csv\n"
+    deps:
+    - path: data/interim/dataset.csv
+      hash: md5
+      md5: e9d8af2043400476b6a0b74d9d904c94
+      size: 18366285
+    - path: params.yaml
+      hash: md5
+      md5: da7805b68f4a037293983ba0c2bbbd37
+      size: 234
+    params:
+      params.yaml:
+        processing:
+          str_columns:
+          - overview
+          - original_title
+          - original_language
+          - release_date
+          list_dict_columns:
+          - genres
+          - keywords
+          - production_companies
+          - production_countries
+          cast_count: 3
+          crew_jobs_list:
+          - Director
+    outs:
+    - path: data/processed/dataset.csv
+      hash: md5
+      md5: 61e490f6bb3a2cc7247e8f6ffc85904b
+      size: 867931
+  train:
+    cmd: "movie_recommender_system train-model --data-path data/processed/dataset.csv
+      --output-path models/model.pkl\n"
+    deps:
+    - path: data/processed/dataset.csv
+      hash: md5
+      md5: 61e490f6bb3a2cc7247e8f6ffc85904b
+      size: 867931
+    outs:
+    - path: models/model.pkl
+      hash: md5
+      md5: 0f97f5ab1accd430965a95c36d7899db
+      size: 78643154
